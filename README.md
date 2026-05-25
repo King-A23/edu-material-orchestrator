@@ -1,6 +1,7 @@
 # edu_materials
 
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776AB.svg?logo=python&logoColor=white)
+![CI](https://github.com/King-A23/edu-material-orchestrator/actions/workflows/ci.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/license-MIT-0f766e.svg)
 ![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Ubuntu-1f2937.svg)
 ![Local First](https://img.shields.io/badge/local--first-agent%20workflow-c2410c.svg)
