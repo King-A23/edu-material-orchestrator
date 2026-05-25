@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
@@ -25,14 +26,22 @@ def run_command(
     check: bool = True,
     input_text: str | None = None,
 ) -> CommandResult:
+    env = os.environ.copy()
+    if input_text is not None:
+        env.setdefault("PYTHONIOENCODING", "utf-8")
+        env.setdefault("PYTHONUTF8", "1")
+
     completed = subprocess.run(
         list(command),
         cwd=str(cwd) if cwd is not None else None,
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         input=input_text,
         timeout=timeout_seconds,
         check=False,
+        env=env,
     )
     result = CommandResult(
         command=list(command),

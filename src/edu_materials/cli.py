@@ -63,6 +63,11 @@ def _emit_json(payload: dict[str, Any]) -> None:
     console.print_json(text)
 
 
+def _exit_with_usage_error(message: str) -> None:
+    typer.echo(message, err=True)
+    raise typer.Exit(code=2)
+
+
 def _interactive_install_confirmation(issue, option: InstallOption) -> bool:
     command = " ".join(option.command)
     typer.echo(f"Missing dependency: {issue.display_name}")
@@ -606,7 +611,7 @@ def build_quiz_command(
     if references_dir is None and manifest is None:
         raise typer.BadParameter("At least one of --references-dir or --manifest is required.")
     if not (prompt and prompt.strip()) and prompt_file is None:
-        raise typer.BadParameter("At least one of --prompt or --prompt-file is required.")
+        _exit_with_usage_error("At least one of --prompt or --prompt-file is required.")
     if output is None:
         output = config.paths.output_dir / "quiz.md"
     effective_adapter_command = adapter_command or config.provider.adapter_command
