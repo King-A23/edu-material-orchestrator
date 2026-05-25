@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose a new workflow, integration, or packaging improvement.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Describe the user need or limitation in the current workflow.
+      placeholder: I want a faster way to validate a new course repo before running the full pipeline.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Outline the behavior, commands, or outputs you want.
+      placeholder: Add a dry-run mode for `build-batch` that only inspects and reports capability gaps.
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Constraints or tradeoffs
+      description: Note any compatibility or privacy constraints that should shape the design.
+      placeholder: This should stay local-only and must not require a provider adapter.

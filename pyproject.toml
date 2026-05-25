@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edu_materials"
+version = "0.1.0a0"
+description = "Open-source teaching material orchestration and handout generation pipeline."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "edu_materials contributors" }
+]
+dependencies = [
+  "typer>=0.12.3",
+  "pydantic>=2.7.0",
+  "pyyaml>=6.0.1",
+  "rich>=13.7.1",
+  "python-docx>=1.1.2",
+  "python-pptx>=0.6.23",
+  "pypdf>=4.2.0",
+  "pdfplumber>=0.11.0",
+  "openpyxl>=3.1.2",
+  "pandas>=2.2.2",
+  "Pillow>=10.3.0",
+  "reportlab>=4.2.2",
+]
+
+[project.optional-dependencies]
+ocr = [
+  "pytesseract>=0.3.10",
+  "ocrmypdf>=16.4.0",
+]
+fuzzy = [
+  "rapidfuzz>=3.9.0",
+]
+dev = [
+  "build>=1.2.2",
+  "pytest>=8.2.0",
+  "twine>=6.2.0",
+]
+
+[project.scripts]
+edu-materials = "edu_materials.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.package-data]
+edu_materials = ["prompts/*.md"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,55 @@
+# Copy this file to `edu-materials.yaml` in your course repo or workspace
+# and adjust the values for your local environment.
+
+ocr:
+  enabled: true
+  engine: tesseract
+  language: chi_sim+eng
+  timeout_seconds: 180
+  min_confidence: 0.7
+
+render:
+  backend_preference:
+    - libreoffice
+    - python-pptx
+  dpi: 180
+
+paths:
+  tmp_dir: tmp
+  output_dir: out
+  cache_dir: .cache/edu-materials
+
+provider:
+  adapter_command: python -m edu_materials.adapters.codex_cli_adapter
+  timeout_seconds: 900
+  max_retries: 2
+
+export:
+  handout_targets:
+    - docx
+  assignment_targets:
+    - docx
+    - pdf
+  quiz_targets:
+    - docx
+    - pdf
+    - html
+
+quiz:
+  material_priority:
+    - exam
+    - assignment
+    - example
+    - other
+  default_question_count: 5
+  default_difficulty: medium
+  default_language: zh-CN
+  max_reference_items: 24
+  max_reference_chars: 40000
+
+library:
+  enabled: true
+  auto_index: true
+  root_dir_name: course_library
+  review_queue_limit: 10
+  variant_default_count: 5

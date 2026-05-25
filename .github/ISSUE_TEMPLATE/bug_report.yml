@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a reproducible defect in the CLI, bundle, or demo workflow.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this. Please include a minimal reproduction and the exact command you ran.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the failure and the command or workflow that triggered it.
+      placeholder: edu-materials demo exited with code 1 on Windows 11...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest set of steps needed to reproduce the issue.
+      placeholder: |
+        1. Install with `pip install -e .[dev]`
+        2. Run `edu-materials demo`
+        3. Inspect `out/demo/quality_report.json`
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: The synthetic demo should generate Markdown and DOCX outputs.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include OS, Python version, and any optional tools present or missing.
+      placeholder: Windows 11, Python 3.11, Tesseract installed, LibreOffice missing.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or JSON output
+      render: shell

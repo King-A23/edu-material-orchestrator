@@ -1,0 +1,7 @@
+interface:
+  display_name: "Edu Materials"
+  short_description: "Turn course files into handouts, assignment analyses, quizzes, grading, and review packs."
+  default_prompt: "Use $edu-materials to inspect my course files, build sourced study outputs, or generate quizzes, grading reports, and review-ready practice."
+
+policy:
+  allow_implicit_invocation: true
