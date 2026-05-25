@@ -17,13 +17,22 @@ REQUIRED_PROMPT_FILES = (
 )
 
 
+def _utf8_env(env: dict[str, str] | None = None) -> dict[str, str]:
+    merged = dict(os.environ if env is None else env)
+    merged.setdefault("PYTHONIOENCODING", "utf-8")
+    merged.setdefault("PYTHONUTF8", "1")
+    return merged
+
+
 def _run(command: list[str], *, cwd: Path, env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
     completed = subprocess.run(
         command,
         cwd=cwd,
-        env=env,
+        env=_utf8_env(env),
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         check=False,
     )
     if completed.returncode != 0:
